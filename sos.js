@@ -27,10 +27,11 @@ function ruidos() {
 			var mensaje = "Escucho ruidos sospechosos por aca: " + latitud + ", " + longitud;
 			var telefono = "+5491167204232"; // Reemplaza con el número de teléfono que deseas llamar
 
-			var whatsappUrl = "https://api.whatsapp.com/send?text=" + telefono + "&text=" + encodeURIComponent(mensaje);
-			window.open(whatsappUrl);
+			
+			
 
-			var telefonoUrl = "tel:" + telefono;
+			var telefonoUrl ="https://api.whatsapp.com/send?text=" + telefono + "&text=" + encodeURIComponent(mensaje);
+			
 			window.open(telefonoUrl);
 		}, function(error) {
 			console.log("Error al obtener la ubicación:", error);
