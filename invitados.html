@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="stylesheet" href="reset.css">
+		<link rel="stylesheet" href="sos.css">
+		<title> SOS by FHD</title>
+	</head>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href ="index.html">Home</a></li>
+                <li><a href="invitados.html">Invitados</a></li>
+                <li><a href= "contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <body>
+        <main>
+            <form>
+                <br>
+				<label for="nombreapellido">Nombre y Apellido</label><br>
+				<input type="text" id="nombreapellido" class="input-padron" required><br>
+                
+				<label for="dni"> D.N.I.</label><br>
+				<input type="text" id="dni" class="input-padron" required placeholder="XX.XXXXXX"><br>
+
+				<label for="patente"> Telefono</label><br>
+				<input type="text" id="patente" class="input-padron" required placeholder="XX-XXX-XX o XXX-XXX"><br>
+
+				<label for="mensaje">Mensaje</label><br>
+				<textarea cols="30" rows=auto id="mensaje"class="input-padron" placeholder="aclaraciones " ></textarea>
+
+				
+                <input type="submit" value="Agregar a la lista" class="enviar" onclick="listaInvitado()">
+				<input type="submit" value="Enviar a la Guardia" class="enviar" onclick="invitado()">
+
+                
+			</form>
+        </main>
+            <section>
+                <h1>Crear lista de invitados</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>D.N.I.</th>
+                            <th>Patente</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla">
+                </tbody>
+            </table>
+        </section>
+
+    </body>
+    <footer>
+
+
+		<img class="rodapie" src="imagenes/logo-grisSin-fondo.png" width="125px" height="125px">
+		<p class="eslogan">Navegá más allá de lo esperado</p>
+		
+		
+	</footer>
+
+
+<script src="sos.js"></script>
+</body>
+</html>
+
