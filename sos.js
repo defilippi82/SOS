@@ -49,7 +49,7 @@ function emergencia() {
 }
 
 function listaInvitado() {
-    
+    event.preventDefault()
 
     const nombreapellido = document.getElementById('nombreapellido').value;
     const dni = document.getElementById('dni').value;
