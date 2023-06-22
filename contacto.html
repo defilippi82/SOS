@@ -22,37 +22,41 @@
     <body>
         <main>
             <form>
-				<label for="nombreapellido">Nombre y Apellido</label>
-				<input type="text" id="nombre" class="input-padron" required>
+				<br>
+				<label for="nombreapellido">Nombre y Apellido</label><br>
+				<input type="text" id="nombre" class="input-padron" required><br>
 
-				<label for="nombreapellido">Lote</label>
-				<input type="text" id="lote" class="input-padron" required placeholder="ej. 5-10">
+				<label for="nombreapellido">Lote</label><br>
+				<input type="text" id="lote" class="input-padron" required placeholder="ej. 5-10"><br>
 
-				<label for="mensaje">Mensaje</label>
-				<textarea cols="30" rows="5" id="consulta"class="input-padron" required></textarea>
-
+				<label for="mensaje">Mensaje</label><br>
+				<textarea cols="30" rows="5" id="consulta" class="input-padron" required></textarea><br>
 				<fieldset>
-					<legend> ¿A quien le gustaría que lo enviemos?</legend>
+					<legend> ¿A quien le gustaría que lo enviemos?</legend><br>
 
-					<label for="radio-email"><input type="radio" name="contacto" value="email" id="radio-administracion">Administración</label>
+					<label for="radio-email"><input type="checkbox" name="contacto" value="email" id="radio-administracion">Administración</label><br>
 					
 
-					<label for="radio-email"><input type="radio" name="contacto" value="administracion" id="radio-facturacion">Facturación</label>
+					<label for="radio-email"><input type="checkbox" name="contacto" value="administracion" id="radio-facturacion">Facturación</label><br>
 									
 
-					<label for="radio-email"><input type="radio" name="contacto" value="controlDeObras" id="radio-controlDeObras" checked>Control de Obras</label>
+					<label for="radio-email"><input type="checkbox" name="contacto" value="controlDeObras" id="radio-controlDeObras">Control de Obras</label><br>
 				
-				</fieldset>			
+				</fieldset>	<br>
 				<input type="checkbox" id="whatsapp" name="whatsapp">
 				<label for="correo">Contactar por Whatsapp</label>
 				<input type="checkbox" id="correo" name="correo">
-				<label for="correo">Consultar por correo electrónico</label>
+				<label for="correo">Consultar por correo electrónico</label><br>
 
 				<input type="submit" value="Enviar consulta" class="enviar" onclick="contacto()">
 
 			</form>
-            
+            <script src="sos.js"></script>
+
+		<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
         </main>
+		
+		
     </body>
     <footer>
 
@@ -63,6 +67,6 @@
 		
 	</footer>
 
-
-<script src="sos.js"></script>
+	
+	
 </html>
