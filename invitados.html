@@ -35,7 +35,9 @@
 				<label for="mensaje">Mensaje</label><br>
 				<textarea cols="30" rows=auto id="mensaje"class="input-padron" placeholder="aclaraciones " ></textarea>
 
-				
+				<input type="checkbox" id="enviarCorreo" name="enviarCorreo">
+				<label for="enviarCorreo">Enviar correo electrónico</label>
+
                 <input type="submit" value="Agregar a la lista" class="enviar" onclick="listaInvitado()">
 				<input type="submit" value="Enviar a la Guardia" class="enviar" onclick="invitado()">
 
@@ -69,6 +71,8 @@
 
 
 <script src="sos.js"></script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
 </body>
 </html>
 

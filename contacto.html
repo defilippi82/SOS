@@ -23,43 +23,32 @@
         <main>
             <form>
 				<label for="nombreapellido">Nombre y Apellido</label>
-				<input type="text" id="nombreapellido" class="input-padron" required>
+				<input type="text" id="nombre" class="input-padron" required>
 
-				<label for="correoelectronico"> Correo Electrónico</label>
-				<input type="email" id="correoelectronico"class="input-padron" required placeholder="email@dominio.com">
-
-				<label for="telefono">Telefono</label>
-				<input type="tel" id="telefono"class="input-padron" required placeholder="(XX) XXXX-XXXX">
+				<label for="nombreapellido">Lote</label>
+				<input type="text" id="lote" class="input-padron" required placeholder="ej. 5-10">
 
 				<label for="mensaje">Mensaje</label>
-				<textarea cols="30" rows="5" id="mensaje"class="input-padron" required></textarea>
+				<textarea cols="30" rows="5" id="consulta"class="input-padron" required></textarea>
 
 				<fieldset>
-					<legend> ¿Cómo le gustaría que lo contactemos?</legend>
+					<legend> ¿A quien le gustaría que lo enviemos?</legend>
 
-					<label for="radio-email"><input type="radio" name="contacto" value="email" id="radio-email">Email</label>
+					<label for="radio-email"><input type="radio" name="contacto" value="email" id="radio-administracion">Administración</label>
 					
 
-					<label for="radio-telefono"><input type="radio" name="contacto" value="telefono" id="radio-telefono">Telefono</label>
+					<label for="radio-email"><input type="radio" name="contacto" value="administracion" id="radio-facturacion">Facturación</label>
 									
 
-					<label for="radio-whatsapp"><input type="radio" name="contacto" value="whatsapp" id="radio-whatsapp" checked>WhatsApp</label>
+					<label for="radio-email"><input type="radio" name="contacto" value="controlDeObras" id="radio-controlDeObras" checked>Control de Obras</label>
 				
-				</fieldset>
+				</fieldset>			
+				<input type="checkbox" id="whatsapp" name="whatsapp">
+				<label for="correo">Contactar por Whatsapp</label>
+				<input type="checkbox" id="correo" name="correo">
+				<label for="correo">Consultar por correo electrónico</label>
 
-				<fieldset>
-					<legend>¿En cual horario prefiere ser atentido?</legend>
-					<select>
-						<option>Mañana</option>
-						<option>Tarde</option>
-						<option>Noche</option>
-					</select>
-				</fieldset>
-
-				<label class="checkbox"><input type="checkbox" checked>¿Le gustaria recibir novedades de la Barbería Alura?</label>
-
-
-				<input type="submit" value="Enviar formulario" class="enviar" onclick="contacto()">
+				<input type="submit" value="Enviar consulta" class="enviar" onclick="contacto()">
 
 			</form>
             
