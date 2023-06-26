@@ -69,14 +69,14 @@ function contacto() {
     const whatsapp = document.getElementById('whatsapp').checked;
     const correo = document.getElementById('correo').checked;
 
-    var msj = "Soy del " + lote + ", quiero " + consulta + ". Desde ya, muchas gracias, " + nombre;
-    var telefono = "+5491167204232";
+    let msj = "Soy del " + lote + ", quiero " + consulta + ". Desde ya, muchas gracias, " + nombre;
+    let telefono = "+5491167204232";
 
     if (administracion && whatsapp) {
-        var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(msj);
-        window.open(whatsappUrl);
+        let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=Nombre: %0A" + nombre + "%0A%0AMensaje: %0A" + consulta + "%0A";
+        window.open(url);
     } else if (administracion && correo) {
-        emailjs.send("service_invitado", "consultaAdministracion", {
+        /*emailjs.send("service_invitado", "consultaAdministracion", {
             lote: lote,
             mensaje: consulta,
             nombre: nombre,
@@ -86,8 +86,26 @@ function contacto() {
             })
             .catch(function(error) {
                 console.log('Error al enviar el correo electrónico:', error);
-            });
+            });*/
+            
+            var emailSubject = "Consulta del lote 5-10";
+            
+		
+			var emailLink = "mailto:" + encodeURIComponent(nombre) + "?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(consulta);
+
+			window.location.href = emailLink;
     }
+}
+function invitacion(){
+
+    const nombreapellido = document.getElementById('nombreapellido').value;
+    const dni = document.getElementById('dni').value;
+    const patente = document.getElementById('patente').value;
+    var msj = "Soy del lote 5-10 y quiero autorizar para su ingreso a " + nombreapellido + " D.N.I. " + dni + ", patente del automóvil " + patente + ". " + mensaje;
+    var telefono = "+5491167204232"; // Reemplazar con el número de teléfono del contacto
+    
+    let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=Nombre: %0A" + nombreapellido + "%0A%0AMensaje: %0A" + msj + "%0A";
+    window.open(url);
 }
 
 function invitado() {
@@ -123,7 +141,7 @@ function invitado() {
         }
         if (data.length > 0) {
             data.forEach(function(invitadoData) {
-                emailjs.send('service_invitado', 'plantillaInvitados', {
+                /*emailjs.send('service_invitado', 'plantillaInvitados', {
                     from_name: "Lote 5-10",
                     nombreapellido: invitadoData.nombreapellido,
                     dni: invitadoData.dni,
@@ -134,11 +152,28 @@ function invitado() {
                     })
                     .catch(function(error) {
                         console.log('Error al enviar el correo electrónico:', error);
-                    });
-            });
+                    });*/
+            var emailBody = "Te han compartido el siguiente texto:\n\n" + msj;
+            var emailSubject = "Invitación del lote 5-10";
+            
+		
+			var emailLink = "mailto:" + encodeURIComponent(invitadoData.nombreapellido) + "?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(emailBody);
+
+			window.location.href = emailLink;
+		        });
         }
     } else {
-        var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(msj);
-        window.open(whatsappUrl);
+      //  var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(msj);
+        //window.open(whatsappUrl);
+    let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=Nombre: %0A" + nombreapellido + "%0A%0AMensaje: %0A" + msj + "%0A";
+    window.open(url);
     }
+}
+
+function invitar(){
+    var urlInvitacion = "invitacion.html"; //pagina de la invitacion
+    var msj = "Te envío la invitación para autorizar el ingreso " + urlInvitacion;
+    var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(msj);
+
+    window.open(whatsappUrl);
 }

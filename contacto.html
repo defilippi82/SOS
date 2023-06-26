@@ -20,6 +20,7 @@
     </header>
 
     <body>
+		<a href="https://api.whatsapp.com/send?phone=+5491154939423&text=hola%20hebert" target="_blank"></a>
         <main>
             <form>
 				<br>
@@ -33,7 +34,12 @@
 				<textarea cols="30" rows="5" id="consulta" name="consulta" class="input-padron" required></textarea><br>
 				<fieldset>
 					<legend> ¿A quien le gustaría que lo enviemos?</legend><br>
-
+					<select>
+                        <option name="contacto" value="email" id="radio-administracion">Administración</option>
+                        <option name="contacto" value="administracion" id="radio-facturacion">Facturación</option>
+                        <option name="contacto" value="controlDeObras" id="radio-controlDeObras">Control de Obras</option>
+                    </select>
+					<!--
 					<label for="radio-email"><input type="checkbox" name="contacto" value="email" id="radio-administracion">Administración</label><br>
 					
 
@@ -41,14 +47,14 @@
 									
 
 					<label for="radio-email"><input type="checkbox" name="contacto" value="controlDeObras" id="radio-controlDeObras">Control de Obras</label><br>
-				
+					-->
 				</fieldset>	<br>
 				<input type="checkbox" id="whatsapp" name="whatsapp">
 				<label for="correo">Contactar por Whatsapp</label>
 				<input type="checkbox" id="correo" name="correo">
 				<label for="correo">Consultar por correo electrónico</label><br>
 
-				<input type="submit" value="Enviar consulta" class="enviar" onclick="contacto()">
+				<input type="submit" value="Enviar consulta" id="enviarConsulta" class="enviar" onclick="contacto()">
 
 			</form>
             <script src="sos.js"></script>
