@@ -171,7 +171,7 @@ function invitado() {
 }
 
 function invitar(){
-    var urlInvitacion = "invitacion.html"; //pagina de la invitacion
+    var urlInvitacion = "https://defilippi82.github.io/SOS/invitacion.html"; //pagina de la invitacion
     var msj = "Te envío la invitación para autorizar el ingreso " + urlInvitacion;
     var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(msj);
 
