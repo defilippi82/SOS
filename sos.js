@@ -68,6 +68,7 @@ function contacto() {
     const administracion = document.getElementById('radio-administracion').checked;
     const whatsapp = document.getElementById('whatsapp').checked;
     const correo = document.getElementById('correo').checked;
+    var destinatarioCorreo = "f.defilippi@gmail.com" // modificar mail que corresponda
 
     let msj = "Soy del " + lote + ", quiero " + consulta + ". Desde ya, muchas gracias, " + nombre;
     let telefono = "+5491167204232";
@@ -89,9 +90,8 @@ function contacto() {
             });*/
             
             var emailSubject = "Consulta del lote 5-10";
-            
-		
-			var emailLink = "mailto:" + encodeURIComponent(nombre) + "?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(consulta);
+            		
+			var emailLink = "mailto:" + encodeURIComponent(destinatarioCorreo) + "?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(consulta);
 
 			window.location.href = emailLink;
     }
@@ -117,9 +117,9 @@ function invitado() {
     const mensaje = document.getElementById('mensaje').value;
     const enviarCorreo = document.getElementById('enviarCorreo').checked;
 
-    var msj = "Soy del lote 5-10 y quiero autorizar para su ingreso a " + nombreapellido + " D.N.I. " + dni + ", patente del automóvil " + patente + ". " + mensaje;
+    var msj = "Soy del lote 5-10 y quiero autorizar para su ingreso a \n"+"Nombre: " + nombreapellido + "\n D.N.I.: " + dni + "\n Patente: " + patente + ". " + mensaje;
     var telefono = "+5491167204232"; // Reemplaza con el número de teléfono que deseas llamar
-
+    var destinatarioCorreo = "f.defilippi@gmail.com"
     if (enviarCorreo) {
         var tabla = document.getElementById('tabla');
         var filas = tabla.getElementsByTagName('tr');
@@ -139,7 +139,7 @@ function invitado() {
                 });
             }
         }
-        if (data.length > 0) {
+        //if (data.length > 0) {
             data.forEach(function(invitadoData) {
                 /*emailjs.send('service_invitado', 'plantillaInvitados', {
                     from_name: "Lote 5-10",
@@ -153,22 +153,22 @@ function invitado() {
                     .catch(function(error) {
                         console.log('Error al enviar el correo electrónico:', error);
                     });*/
-            var emailBody = "Te han compartido el siguiente texto:\n\n" + msj;
-            var emailSubject = "Invitación del lote 5-10";
+            var emailBody = "Buenas,\n" + msj;
+            var emailSubject = "Planilla Invitados del lote 5-10";
             
 		
-			var emailLink = "mailto:" + encodeURIComponent(invitadoData.nombreapellido) + "?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(emailBody);
+			var emailLink = "mailto:" + encodeURIComponent(destinatarioCorreo) + "?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(emailBody);
 
 			window.location.href = emailLink;
 		        });
-        }
-    } else {
+            } else {
       //  var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(msj);
         //window.open(whatsappUrl);
-    let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=Nombre: %0A" + nombreapellido + "%0A%0AMensaje: %0A" + msj + "%0A";
-    window.open(url);
-    }
+            let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=Nombre: %0A" + nombreapellido + "%0A%0AMensaje: %0A" + msj + "%0A";
+            window.open(url);
+         }
 }
+
 
 function invitar(){
     var urlInvitacion = "https://defilippi82.github.io/SOS/invitacion.html"; //pagina de la invitacion
