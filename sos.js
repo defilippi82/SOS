@@ -8,9 +8,7 @@ function alerta() {
 
             let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=%0A" + mensaje + "%0A";
             window.open(urlrl);
-
-            var telefonoUrl = "tel:" + telefono;
-            window.open(telefonoUrl);
+            
         }, function(error) {
             console.log("Error al obtener la ubicación:", error);
         });
