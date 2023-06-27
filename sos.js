@@ -4,11 +4,10 @@ function alerta() {
             var latitud = position.coords.latitude;
             var longitud = position.coords.longitude;
             var mensaje = "Mi ubicación actual es: " + latitud + ", " + longitud;
-            var telefono = "+5491154939423"; // Reemplaza con el número de teléfono que deseas llamar
-
-            let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=%0A" + mensaje + "%0A";
-            window.open(urlrl);
+            var telefono = "+5491167204232"; // Reemplazar con el número de teléfono del contacto
             
+            let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=%0A" + mensaje + "%0A";
+           return url //window.open(url);
         }, function(error) {
             console.log("Error al obtener la ubicación:", error);
         });
@@ -16,7 +15,7 @@ function alerta() {
         console.log("Geolocalización no es compatible con este navegador.");
     }
 }
-
+ 
 function ruidos() {
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -26,7 +25,7 @@ function ruidos() {
             var telefono = "+5491167204232"; // Reemplazar con el número de teléfono del contacto
             
             let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=%0A" + mensaje + "%0A";
-            window.open(url);
+           return url //window.open(url);
         }, function(error) {
             console.log("Error al obtener la ubicación:", error);
         });
