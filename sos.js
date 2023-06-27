@@ -4,10 +4,10 @@ function alerta() {
             var latitud = position.coords.latitude;
             var longitud = position.coords.longitude;
             var mensaje = "Mi ubicación actual es: " + latitud + ", " + longitud;
-            var telefono = "+5491167204232"; // Reemplaza con el número de teléfono que deseas llamar
+            var telefono = "+5491154939423"; // Reemplaza con el número de teléfono que deseas llamar
 
-            var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(mensaje);
-            window.open(whatsappUrl);
+            let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=%0A" + mensaje + "%0A";
+            window.open(urlrl);
 
             var telefonoUrl = "tel:" + telefono;
             window.open(telefonoUrl);
@@ -24,11 +24,11 @@ function ruidos() {
         navigator.geolocation.getCurrentPosition(function(position) {
             var latitud = position.coords.latitude;
             var longitud = position.coords.longitude;
-            var mensaje = "Escucho ruidos sospechosos por acá: " + latitud + ", " + longitud;
-            var telefono = "+5491167204232"; // Reemplaza con el número de teléfono que deseas llamar
-
-            var telefonoUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(mensaje);
-            window.open(telefonoUrl);
+            var mensaje = "Soy del lote 5-10 y escucho ruidos sospechosos por acá: " + latitud + ", " + longitud;
+            var telefono = "+5491167204232"; // Reemplazar con el número de teléfono del contacto
+            
+            let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=%0A" + mensaje + "%0A";
+            window.open(url);
         }, function(error) {
             console.log("Error al obtener la ubicación:", error);
         });
@@ -71,24 +71,13 @@ function contacto() {
     var destinatarioCorreo = "f.defilippi@gmail.com" // modificar mail que corresponda
 
     let msj = "Soy del " + lote + ", quiero " + consulta + ". Desde ya, muchas gracias, " + nombre;
-    let telefono = "+5491167204232";
+    let telefono = "+5491154939423";
 
     if (administracion && whatsapp) {
         let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=Nombre: %0A" + nombre + "%0A%0AMensaje: %0A" + consulta + "%0A";
         window.open(url);
     } else if (administracion && correo) {
-        /*emailjs.send("service_invitado", "consultaAdministracion", {
-            lote: lote,
-            mensaje: consulta,
-            nombre: nombre,
-        }, 'F2yt1jfmdvtF48It0')
-            .then(function(response) {
-                console.log('Correo electrónico enviado:', response.status, response.text);
-            })
-            .catch(function(error) {
-                console.log('Error al enviar el correo electrónico:', error);
-            });*/
-            
+                    
             var emailSubject = "Consulta del lote 5-10";
             		
 			var emailLink = "mailto:" + encodeURIComponent(destinatarioCorreo) + "?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(consulta);
@@ -111,17 +100,24 @@ function invitacion(){
 function invitado() {
     event.preventDefault();
 
-    const nombreapellido = document.getElementById('nombreapellido').value;
+    /*const nombreapellido = document.getElementById('nombreapellido').value;
     const dni = document.getElementById('dni').value;
     const patente = document.getElementById('patente').value;
     const mensaje = document.getElementById('mensaje').value;
     const enviarCorreo = document.getElementById('enviarCorreo').checked;
+*/
+const form = event.target;
+const nombreapellido = form.elements['nombreapellido'].value;
+const dni = form.elements['dni'].value;
+const patente = form.elements['patente'].value;
+const mensaje = form.elements['mensaje'].value;
+const enviarCorreo = form.elements['enviarCorreo'].checked;
 
     var msj = "Soy del lote 5-10 y quiero autorizar para su ingreso a \n"+"Nombre: " + nombreapellido + "\n D.N.I.: " + dni + "\n Patente: " + patente + ". " + mensaje;
     var telefono = "+5491167204232"; // Reemplaza con el número de teléfono que deseas llamar
     var destinatarioCorreo = "f.defilippi@gmail.com"
     if (enviarCorreo) {
-        var tabla = document.getElementById('tabla');
+       var tabla = document.getElementById('tabla');
         var filas = tabla.getElementsByTagName('tr');
 
         var data = [];
@@ -139,27 +135,30 @@ function invitado() {
                 });
             }
         }
-        //if (data.length > 0) {
-            data.forEach(function(invitadoData) {
-                /*emailjs.send('service_invitado', 'plantillaInvitados', {
-                    from_name: "Lote 5-10",
-                    nombreapellido: invitadoData.nombreapellido,
-                    dni: invitadoData.dni,
-                    patente: invitadoData.patente,
-                }, 'F2yt1jfmdvtF48It0')
-                    .then(function(response) {
-                        console.log('Correo electrónico enviado:', response.status, response.text);
-                    })
-                    .catch(function(error) {
-                        console.log('Error al enviar el correo electrónico:', error);
-                    });*/
-            var emailBody = "Buenas,\n" + msj;
+               
+        data.forEach(function(invitadoData) {
+                
+           /* var emailBody = "Buenas,\n" + msj;
             var emailSubject = "Planilla Invitados del lote 5-10";
-            
+            */
+            var emailTemplate = Handlebars.compile(document.getElementById('email-template').innerHTML);
+            var emailData = {msj: msj};
+            var emailBody = emailTemplate(emailData);
+            var emailSubject = "Planilla Invitados del lote 5-10";
 		
-			var emailLink = "mailto:" + encodeURIComponent(destinatarioCorreo) + "?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(emailBody);
+		//	var emailLink = "mailto:" + encodeURIComponent(destinatarioCorreo) + "?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(emailBody);
+//
+//			window.location.href = emailLink;
+var xhr = new XMLHttpRequest();
+xhr.open('POST', '/send-email', true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.send(JSON.stringify({
+  to: destinatarioCorreo,
+  subject: emailSubject,
+  body: emailBody
+}));
 
-			window.location.href = emailLink;
+
 		        });
             } else {
       //  var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(msj);

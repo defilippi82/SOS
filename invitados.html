@@ -10,18 +10,20 @@
 	</head>
 
     <header>
-        <nav>
-            <ul>
-                <li><a href ="index.html">Home</a></li>
-                <li><a href="invitados.html">Invitados</a></li>
-                <li><a href= "contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+			<div class="header-bar">
+				<ul class="slider-menu">
+				<li><a href ="index.html">Home</a></li>
+				<li><a href="invitados.html">Invitados</a></li>
+				<li><a href= "contacto.html">Contacto</a></li>
+				</ul>
+			</div>
+		</div>
     </header>
 
     <body>
         <main>
-            <form action="https://formsubmit.co/f.defilippi@gmail.com" method="POST" />
+            <form >
                 <br>
 				<label for="nombreapellido">Nombre y Apellido</label><br>
 				<input type="text" name="nombreapellido" id="nombreapellido" class="input-padron" required><br>
@@ -33,7 +35,7 @@
 				<input type="text" name="patente" id="patente" class="input-padron" required placeholder="XX-XXX-XX o XXX-XXX"><br>
 
 				<label for="mensaje">Mensaje</label><br>
-				<textarea cols="30" rows=auto name="mensaje" id="mensaje"class="input-padron" placeholder="aclaraciones " ></textarea>
+				<textarea cols="30" rows=auto name="mensaje" id="mensaje"class="input-padron" placeholder="aclaraciones " ></textarea><br>
 
 				<input type="checkbox" id="enviarCorreo" name="enviarCorreo">
 				<label for="enviarCorreo">Enviar correo electrónico</label>
@@ -65,7 +67,7 @@
     <footer>
 
 
-		<img class="rodapie" src="imagenes/logo-grisSin-fondo.png" width="125px" height="125px">
+		<img class="rodapie" src="imagenes/logo-grisSin-fondo.png" width="75px" height="75px">
 		<p class="eslogan">Navegá más allá de lo esperado</p>
 		
 		
@@ -73,7 +75,7 @@
 
 
 <script src="sos.js"></script>
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
 
 </body>
 </html>

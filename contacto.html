@@ -6,17 +6,20 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<link rel="stylesheet" href="reset.css">
 		<link rel="stylesheet" href="sos.css">
+		<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 		<title> SOS by FHD</title>
 	</head>
 
     <header>
-        <nav>
-            <ul>
-                <li><a href ="index.html">Home</a></li>
-                <li><a href="invitados.html">Invitados</a></li>
-                <li><a href= "contacto.html">Contacto</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+			<div class="header-bar">
+				<ul class="slider-menu">
+				<li><a href ="index.html">Home</a></li>
+				<li><a href="invitados.html">Invitados</a></li>
+				<li><a href= "contacto.html">Contacto</a></li>
+				</ul>
+			</div>
+		</div>
     </header>
 
     <body>
@@ -31,9 +34,9 @@
 				<input type="text" id="lote" name="lote" class="input-padron" required placeholder="ej. 5-10"><br>
 
 				<label for="mensaje">Mensaje</label><br>
-				<textarea cols="30" rows="5" id="consulta" name="consulta" class="input-padron" required></textarea><br>
+				<textarea cols="30" rows="5" id="consulta" name="consulta" class="input-padron" required></textarea>
 				<fieldset>
-					<legend> ¿A quien le gustaría que lo enviemos?</legend><br>
+					<legend> ¿A quien le gustaría que lo enviemos?</legend>
 					<select>
                         <option name="contacto" value="email" id="radio-administracion">Administración</option>
                         <option name="contacto" value="administracion" id="radio-facturacion">Facturación</option>
@@ -50,10 +53,11 @@
 					-->
 				</fieldset>	<br>
 				<input type="checkbox" id="whatsapp" name="whatsapp">
-				<label for="correo">Contactar por Whatsapp</label>
+				<label for="correo">Contactar por Whatsapp</label><br>
 				<input type="checkbox" id="correo" name="correo">
 				<label for="correo">Consultar por correo electrónico</label><br>
 
+				
 				<input type="submit" value="Enviar consulta" id="enviarConsulta" class="enviar" onclick="contacto()">
 
 			</form>
@@ -67,7 +71,7 @@
     <footer>
 
 
-		<img class="rodapie" src="imagenes/logo-grisSin-fondo.png" width="125px" height="125px">
+		<img class="rodapie" src="imagenes/logo-grisSin-fondo.png" width="75px" height="75px">
 		<p class="eslogan">Navegá más allá de lo esperado</p>
 		
 		
