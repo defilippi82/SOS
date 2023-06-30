@@ -7,8 +7,8 @@ function alerta() {
             const mensaje = "Soy del lote "+lote+ ", escucho ruidos necesito que vengan acá, " + latitud + ", " + longitud;
             var telefono = "+5491154939423"; // Reemplazar con el número de teléfono del contacto
             
-             var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(mensaje);
-            return whatsappUrl;
+            var whatsappUrl = "whatsapp://send?text=" + encodeURIComponent(mensaje);
+            window.location.href = whatsappUrl;
         }, function(error) {
             console.log("Error al obtener la ubicación:", error);
         });
@@ -23,11 +23,11 @@ function ruidos() {
             var latitud = position.coords.latitude;
             var longitud = position.coords.longitude;
             const lote = "5-10"
-            var mensaje = "Soy del lote "+lote+" y escucho ruidos sospechosos por acá: " + latitud + ", " + longitud;
+            const mensaje = "Soy del lote "+lote+" y escucho ruidos sospechosos por acá: " + latitud + ", " + longitud;
             var telefono = "+5491167204232"; // Reemplazar con el número de teléfono del contacto
             
-            let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=%0A" + mensaje + "%0A";
-           return url //window.open(url);
+            var whatsappUrl = "whatsapp://send?text=" + encodeURIComponent(mensaje);
+        window.location.href = whatsappUrl;
         }, function(error) {
             console.log("Error al obtener la ubicación:", error);
         });
@@ -67,14 +67,17 @@ function contacto() {
     const administracion = document.getElementById('radio-administracion').value;
     const whatsapp = document.getElementById('whatsapp').checked;
     const correo = document.getElementById('correo').checked;
-    var destinatarioCorreo = "f.defilippi@gmail.com" // modificar mail que corresponda
-
+    const destinatarioCorreo = "f.defilippi@gmail.com" // modificar mail que corresponda
+    const telefono = "+5491154939423";
     let msj = `Soy del ${lote}, quiero ${consulta}. Desde ya, muchas gracias, ${nombre}`;
-    //let telefono = "+5491154939423";
+   
 
     if (administracion === administracion && whatsapp) {
-        let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=Nombre: %0A" + nombre + "%0A%0AMensaje: %0A" + consulta + "%0A";
-        window.location.href = url;
+        
+        var whatsappUrl = "whatsapp://send?text=" + encodeURIComponent(consulta);
+        window.location.href = whatsappUrl;
+        //let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=Nombre: %0A" + nombre + "%0A%0AMensaje: %0A" + consulta + "%0A";
+        //window.location.href = url;
     } else if (administracion === administracion && correo) {
                     
             var emailSubject = "Consulta del lote "+ lote;
