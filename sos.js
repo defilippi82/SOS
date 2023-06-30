@@ -1,10 +1,10 @@
 function alerta() {
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            var latitud = position.coords.latitude;
-            var longitud = position.coords.longitude;
+            const latitud = position.coords.latitude;
+            const longitud = position.coords.longitude;
             const lote = "5-10"
-            var mensaje = "Soy del lote "+lote+ ", escucho ruidos necesito que vengan acá, " + latitud + ", " + longitud;
+            const mensaje = "Soy del lote "+lote+ ", escucho ruidos necesito que vengan acá, " + latitud + ", " + longitud;
             var telefono = "+5491154939423"; // Reemplazar con el número de teléfono del contacto
             
              var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(mensaje);
@@ -18,7 +18,7 @@ function alerta() {
 }
  
 function ruidos() {
-    if ("geolocation" in navigator) {
+    if (typeof navigator !== 'undefined' && navigator !== null && "geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
             var latitud = position.coords.latitude;
             var longitud = position.coords.longitude;
@@ -69,13 +69,13 @@ function contacto() {
     const correo = document.getElementById('correo').checked;
     var destinatarioCorreo = "f.defilippi@gmail.com" // modificar mail que corresponda
 
-    let msj = "Soy del " + lote + ", quiero " + consulta + ". Desde ya, muchas gracias, " + nombre;
-    let telefono = "+5491154939423";
+    let msj = `Soy del ${lote}, quiero ${consulta}. Desde ya, muchas gracias, ${nombre}`;
+    //let telefono = "+5491154939423";
 
-    if (administracion == administracion && whatsapp) {
+    if (administracion === administracion && whatsapp) {
         let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=Nombre: %0A" + nombre + "%0A%0AMensaje: %0A" + consulta + "%0A";
-        window.open(url);
-    } else if (administracion == administracion && correo) {
+        window.location.href = url;
+    } else if (administracion === administracion && correo) {
                     
             var emailSubject = "Consulta del lote "+ lote;
             		
@@ -89,8 +89,12 @@ function invitacion(){
     const nombreapellido = document.getElementById('nombreapellido').value;
     const dni = document.getElementById('dni').value;
     const patente = document.getElementById('patente').value;
+    if (!nombreapellido || !dni || !patente) {
+        alert('Por favor complete todos los campos.');
+        return;
+      }
     const lote = "5-10"
-    var msj = "Soy del lote "+lote+" y quiero autorizar para su ingreso a " + nombreapellido + " D.N.I. " + dni + ", patente del automóvil " + patente + ". " + mensaje;
+    var msj = `Soy del lote ${lote} y quiero autorizar para su ingreso a ${nombreapellido} D.N.I. ${dni}, patente del automóvil ${patente}. ${mensaje}`;
     var telefono = "+5491167204232"; // Reemplazar con el número de teléfono del contacto
     
     let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=Nombre: %0A" + nombreapellido + "%0A%0AMensaje: %0A" + msj + "%0A";
@@ -105,21 +109,22 @@ function invitado() {
     const patente = document.getElementById('patente').value;
     const mensaje = document.getElementById('mensaje').value;
     const enviarCorreo = document.getElementById('enviarCorreo').checked;
+    const lote = "5-10"
 
-    var msj = "Soy del lote "+ lote+" y quiero autorizar para su ingreso a " + nombreapellido + " D.N.I. " + dni + ", patente del automóvil " + patente + ". " + mensaje;
+    const msj = "Soy del lote "+ lote+" y quiero autorizar para su ingreso a " + nombreapellido + " D.N.I. " + dni + ", patente del automóvil " + patente + ". " + mensaje;
     var telefono = "+5491167204232"; // Reemplaza con el número de teléfono que deseas llamar
 
     if (enviarCorreo) {
-        var tabla = document.getElementById('tabla');
-        var filas = tabla.getElementsByTagName('tr');
-        var destinatarioCorreo = "f.defilippi@gmail.com" // modificar mail que corresponda
+        const tabla = document.getElementById('tabla');
+        const filas = tabla.getElementsByTagName('tr');
+        const destinatarioCorreo = "f.defilippi@gmail.com" // modificar mail que corresponda
 
-        var data = [];
+        const data = [];
         for (var i = 0; i < filas.length; i++) {
-            var celdas = filas[i].getElementsByTagName('td');
-            var nombreapellidoCell = celdas[0].textContent.trim();
-            var dniCell = celdas[1].textContent.trim();
-            var patenteCell = celdas[2].textContent.trim();
+            const celdas = filas[i].getElementsByTagName('td');
+            const nombreapellidoCell = celdas[0].textContent.trim();
+            const dniCell = celdas[1].textContent.trim();
+            const patenteCell = celdas[2].textContent.trim();
 
             if (nombreapellidoCell && dniCell && patenteCell) {
                 data.push({
@@ -131,16 +136,19 @@ function invitado() {
         }
         if (data.length > 0) {
             data.forEach(function(invitadoData) {
-                var emailSubject = "Consulta del lote 5-10";
+                const emailSubject = "Consulta del lote 5-10";
             		
-			var emailLink = "mailto:" + encodeURIComponent(destinatarioCorreo) + "?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(msj);
+			const emailLink = "mailto:" + encodeURIComponent(destinatarioCorreo) + "?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(msj);
 
 			window.location.href = emailLink;
             });
         }
     } else {
-        var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(msj);
-        window.open(whatsappUrl);
+        //var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(msj);
+        //window.open(whatsappUrl);
+        var whatsappUrl = "whatsapp://send?text=" + encodeURIComponent(msj);
+        window.location.href = whatsappUrl;
+
     }
 }
 
