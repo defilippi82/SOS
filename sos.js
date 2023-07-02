@@ -35,7 +35,8 @@ function ruidos() {
             const mensaje = "Soy del lote "+lote+" y escucho ruidos sospechosos por acá: " + latitud + ", " + longitud;
             var telefono = "+5491167204232"; // Reemplazar con el número de teléfono del contacto
             
-            var whatsappUrl = "whatsapp://send?text=" + encodeURIComponent(mensaje);
+            var whatsappUrl = "https://api.whatsapp.com/send?phone="+telefono+"%0A%0Atext=" +mensaje + "%0A"
+            // "whatsapp://send?text=" + encodeURIComponent(mensaje);
         window.location.href = whatsappUrl;
         }, function(error) {
             console.log("Error al obtener la ubicación:", error);
@@ -67,6 +68,12 @@ function listaInvitado() {
     fila += '</tr>';
 
     tbody.innerHTML += fila;
+
+    const nombreapellidoInput = document.getElementById('nombreapellido');
+    document.getElementById('nombreapellido').value = "";
+    document.getElementById('dni').value = "";
+    document.getElementById('patente').value = "";
+    nombreapellidoInput.focus();
 }
 
 function contacto() {
@@ -94,6 +101,12 @@ function contacto() {
 			var emailLink = "mailto:" + encodeURIComponent(destinatarioCorreo) + "?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(consulta);
 
 			window.location.href = emailLink;
+
+            const nombreapellidoInput = document.getElementById('nombre');
+            document.getElementById('nombre').value = "";
+            document.getElementById('lote').value = "";
+            document.getElementById('consulta').value = "";
+            nombreapellidoInput.focus();
     }
 }
 function invitacion(){
@@ -111,6 +124,12 @@ function invitacion(){
     
     let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=Nombre: %0A" + nombreapellido + "%0A%0AMensaje: %0A" + msj + "%0A";
     window.open(url);
+    const nombreapellidoInput = document.getElementById('nombreapellido');
+    document.getElementById('nombreapellido').value = "";
+    document.getElementById('dni').value = "";
+    document.getElementById('patente').value = "";
+    documente.getElementById('mensaje').value = "";
+    nombreapellidoInput.focus();
 }
 
 function invitado() {
@@ -157,12 +176,19 @@ function invitado() {
             const emailLink = "mailto:" + encodeURIComponent(destinatarioCorreo) + "?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(msj2);
 
 			window.location.href = emailLink;
+
             
         }
     } else {
         
         var whatsappUrl = "whatsapp://send?text=" + encodeURIComponent(msj);
         window.location.href = whatsappUrl;
+        const nombreapellidoInput = document.getElementById('nombreapellido');
+        document.getElementById('nombreapellido').value = "";
+        document.getElementById('dni').value = "";
+        document.getElementById('patente').value = "";
+        documente.getElementById('mensaje').value = "";
+        nombreapellidoInput.focus();
 
     }
 }
