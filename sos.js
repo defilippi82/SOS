@@ -1,14 +1,23 @@
 function alerta() {
     if ("geolocation" in navigator) {
+        function Location(latitud, longitud) {
+            this.latitud = latitud;
+            this.longitud = longitud;
+          }
+          
         navigator.geolocation.getCurrentPosition(function(position) {
             const latitud = position.coords.latitude;
             const longitud = position.coords.longitude;
             const lote = "5-10"
             const mensaje = "Soy del lote "+lote+ ", escucho ruidos necesito que vengan acá, " + latitud + ", " + longitud;
             var telefono = "+5491154939423"; // Reemplazar con el número de teléfono del contacto
+            const location = new Location(latitud, longitud );
+
             
-            var whatsappUrl = "whatsapp://send?text=" + encodeURIComponent(mensaje);
+
+            var whatsappUrl = "whatsapp://send?text=" + encodeURIComponent(mensaje + location);
             window.location.href = whatsappUrl;
+            
         }, function(error) {
             console.log("Error al obtener la ubicación:", error);
         });
@@ -96,7 +105,7 @@ function invitacion(){
         alert('Por favor complete todos los campos.');
         return;
       }
-    const lote = "5-10"
+    const lote = "5-10" // de base de datos "manzana + terreno"
     var msj = `Soy del lote ${lote} y quiero autorizar para su ingreso a ${nombreapellido} D.N.I. ${dni}, patente del automóvil ${patente}. ${mensaje}`;
     var telefono = "+5491167204232"; // Reemplazar con el número de teléfono del contacto
     
@@ -115,7 +124,8 @@ function invitado() {
     const lote = "5-10"
 
     const msj = "Soy del lote "+ lote+" y quiero autorizar para su ingreso a " + nombreapellido + " D.N.I. " + dni + ", patente del automóvil " + patente + ". " + mensaje;
-    var telefono = "+5491167204232"; // Reemplaza con el número de teléfono que deseas llamar
+    
+    
 
     if (enviarCorreo) {
         const tabla = document.getElementById('tabla');
@@ -138,17 +148,19 @@ function invitado() {
             }
         }
         if (data.length > 0) {
+            let msj2 = "Soy del lote " + lote + " y quiero autorizar para su ingreso a las siguientes personas:\n";
+            msj2 += "Nombre\t\tD.N.I.\t\tPatente\n";
             data.forEach(function(invitadoData) {
-                const emailSubject = "Consulta del lote 5-10";
-            		
-			const emailLink = "mailto:" + encodeURIComponent(destinatarioCorreo) + "?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(msj);
+                msj2 += invitadoData.nombreapellido + "\t\t" + invitadoData.dni + "\t\t" + invitadoData.patente + "\n";
+            });
+            const emailSubject = "Lista de Invitados del lote "+ lote;
+            const emailLink = "mailto:" + encodeURIComponent(destinatarioCorreo) + "?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(msj2);
 
 			window.location.href = emailLink;
-            });
+            
         }
     } else {
-        //var whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(msj);
-        //window.open(whatsappUrl);
+        
         var whatsappUrl = "whatsapp://send?text=" + encodeURIComponent(msj);
         window.location.href = whatsappUrl;
 
