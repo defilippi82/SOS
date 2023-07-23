@@ -215,7 +215,7 @@ function invitado() {
         }
         if (data.length > 0) {
             let msj2 = "Soy del lote " + lote + " y quiero autorizar para su ingreso a las siguientes personas:\n";
-            msj2 += "Nombre\t\t\t\tD.N.I.\t\t\t\tPatente\n";
+            msj2 += "Nombre\t\t\tD.N.I.\t\t\tPatente\n";
             data.forEach(function(invitadoData) {
                 msj2 += invitadoData.nombreapellido + "\t\t" + invitadoData.dni + "\t\t" + invitadoData.patente + "\n";
             });
