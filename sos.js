@@ -33,10 +33,10 @@ function ruidos() {
             var longitud = position.coords.longitude;
             const lote = "5-10"
             const mensaje = "Soy del lote "+lote+" y escucho ruidos sospechosos por acá: " + latitud + ", " + longitud;
-            var telefono = "+5491167204232"; // Reemplazar con el número de teléfono del contacto
+            var telefono = "+54911549394232"; // Reemplazar con el número de teléfono del contacto
             
-            var whatsappUrl = "https://api.whatsapp.com/send?phone="+telefono+"%0A%0Atext=" +mensaje + "%0A"
-            // "whatsapp://send?text=" + encodeURIComponent(mensaje);
+            var whatsappUrl = "https://api.whatsapp.com/send?phone="+telefono+ "&text=" + encodeURIComponent(mensaje);
+            
         window.location.href = whatsappUrl;
         }, function(error) {
             console.log("Error al obtener la ubicación:", error);
@@ -81,9 +81,13 @@ function contacto() {
     const lote = document.getElementById('lote').value;
     const consulta = document.getElementById('consulta').value;
     const administracion = document.getElementById('radio-administracion').value;
+    const facturacion = document.getElementById('radio-facturacion').value;
+    const controlDeObras = document.getElementById('radio-controlDeObras').value;
     const whatsapp = document.getElementById('whatsapp').checked;
     const correo = document.getElementById('correo').checked;
     const destinatarioCorreo = "f.defilippi@gmail.com" // modificar mail que corresponda
+    const destinatarioCorreo1 = "f.defilippi@gmail.com" // modificar mail que corresponda
+    const destinatarioCorreo2 = "f.defilippi@gmail.com" // modificar mail que corresponda
     const telefono = "+5491154939423";
     let msj = `Soy del ${lote}, quiero ${consulta}. Desde ya, muchas gracias, ${nombre}`;
    
@@ -108,6 +112,46 @@ function contacto() {
             document.getElementById('consulta').value = "";
             nombreapellidoInput.focus();
     }
+	 if (facturacion === facturacion && whatsapp) {
+        
+        var whatsappUrl = "whatsapp://send?text=" + encodeURIComponent(consulta);
+        window.location.href = whatsappUrl;
+        //let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=Nombre: %0A" + nombre + "%0A%0AMensaje: %0A" + consulta + "%0A";
+        //window.location.href = url;
+    } else if (facturacion === facturacion && correo) {
+                    
+            var emailSubject = "Consulta del lote "+ lote;
+                    
+            var emailLink = "mailto:" + encodeURIComponent(destinatarioCorreo1) + "?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(consulta);
+
+            window.location.href = emailLink;
+
+            const nombreapellidoInput = document.getElementById('nombre');
+            document.getElementById('nombre').value = "";
+            document.getElementById('lote').value = "";
+            document.getElementById('consulta').value = "";
+            nombreapellidoInput.focus();
+    }
+    if (controlDeObras === controlDeObras && whatsapp) {
+        
+        var whatsappUrl = "whatsapp://send?text=" + encodeURIComponent(consulta);
+        window.location.href = whatsappUrl;
+        //let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=Nombre: %0A" + nombre + "%0A%0AMensaje: %0A" + consulta + "%0A";
+        //window.location.href = url;
+    } else if (controlDeObras === controlDeObras && correo) {
+                    
+            var emailSubject = "Consulta del lote "+ lote;
+                    
+            var emailLink = "mailto:" + encodeURIComponent(destinatarioCorreo2) + "?subject=" + encodeURIComponent(emailSubject) + "&body=" + encodeURIComponent(consulta);
+
+            window.location.href = emailLink;
+
+            const nombreapellidoInput = document.getElementById('nombre');
+            document.getElementById('nombre').value = "";
+            document.getElementById('lote').value = "";
+            document.getElementById('consulta').value = "";
+            nombreapellidoInput.focus();
+    }
 }
 function invitacion(){
 
@@ -120,16 +164,19 @@ function invitacion(){
       }
     const lote = "5-10" // de base de datos "manzana + terreno"
     var msj = `Soy del lote ${lote} y quiero autorizar para su ingreso a ${nombreapellido} D.N.I. ${dni}, patente del automóvil ${patente}. ${mensaje}`;
-    var telefono = "+5491167204232"; // Reemplazar con el número de teléfono del contacto
+    var telefono = "+5491154939423"; // Reemplazar con el número de teléfono del propietario para que lo reenvie a la guardia
     
-    let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=Nombre: %0A" + nombreapellido + "%0A%0AMensaje: %0A" + msj + "%0A";
-    window.open(url);
+    var whatsappUrl = "https://api.whatsapp.com/send?phone="+telefono+ "&text=" + encodeURIComponent(msj);
+    window.location.href = whatsappUrl;
+    //let url = "https://api.whatsapp.com/send?phone="+telefono+"&text=Nombre: %0A" + nombreapellido + "%0A%0AMensaje: %0A" + msj + "%0A";
+    //window.open(url);
     const nombreapellidoInput = document.getElementById('nombreapellido');
     document.getElementById('nombreapellido').value = "";
     document.getElementById('dni').value = "";
     document.getElementById('patente').value = "";
     documente.getElementById('mensaje').value = "";
     nombreapellidoInput.focus();
+}
 }
 
 function invitado() {
@@ -168,7 +215,7 @@ function invitado() {
         }
         if (data.length > 0) {
             let msj2 = "Soy del lote " + lote + " y quiero autorizar para su ingreso a las siguientes personas:\n";
-            msj2 += "Nombre\t\tD.N.I.\t\tPatente\n";
+            msj2 += "Nombre\t\t\t\tD.N.I.\t\t\t\tPatente\n";
             data.forEach(function(invitadoData) {
                 msj2 += invitadoData.nombreapellido + "\t\t" + invitadoData.dni + "\t\t" + invitadoData.patente + "\n";
             });
