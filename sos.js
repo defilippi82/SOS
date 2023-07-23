@@ -176,7 +176,7 @@ function invitacion(){
     document.getElementById('patente').value = "";
     documente.getElementById('mensaje').value = "";
     nombreapellidoInput.focus();
-}
+
 }
 
 function invitado() {
