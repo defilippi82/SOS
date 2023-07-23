@@ -15,7 +15,7 @@ function alerta() {
 
             
 
-            var whatsappUrl = "whatsapp://send?text=" + encodeURIComponent(mensaje + location);
+           var whatsappUrl = "https://api.whatsapp.com/send?phone="+telefono+ "&text=" + encodeURIComponent(mensaje);
             window.location.href = whatsappUrl;
             
         }, function(error) {
