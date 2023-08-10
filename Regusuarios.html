@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="stylesheet" href="reset.css">
+		<link rel="stylesheet" href="sos.css">
+		<title> SOS by FHD</title>
+	</head>
+
+	<body>
+        <header>
+            <div class="container">
+            <div class="header-bar">
+                <ul class="slider-menu">
+                    <li><a href ="index.html">Home</a></li>
+                <li><a href="invitados.html">Invitados</a></li>
+                <li><a href= "contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            </div>
+        </header>
+
+        <div>
+            
+            <form action="">
+                <legend>Registro de Usuario Nuevo</h1>
+            
+                
+            <form method="post">
+                 <div class="elem-group"> 
+                <label for="name">Nombre y Apellido</label> 
+                <input type="text" id="name" name="visitor_name" placeholder="Nombre y Apellido" pattern=[A-Z\sa-z]{3,20} required> 
+            </div>
+             <div class="elem-group"> <label for="email">Correo electrónico</label> 
+                <input type="email" id="email" name="visitor_email" placeholder="ejemplo@email.com" required> 
+            </div>
+            <div>
+                <label for="manzana">Manzana</label>
+                <input type="number"required maxlength="2" size="10">
+                <label for="lote">Lote</label>
+                <input type="number" required maxlength="3" width="1"></div>
+                <div>
+                <label for="tel">Teléfono</label>
+                <input type="tel" required placeholder="(XX)-XXXX-XXXX"></div>
+                <input type="submit" value="Registrarse"></div>
+              <div class="elem-group"> <label for="title">Motivo de contacto</label> <input type="text" id="title" name="email_title" required placeholder="Problema/Consulta" pattern=[A-Za-z0-9\s]{8,60}> </div> <div class="elem-group"> <label for="message">Solicitud</label> <textarea id="message" name="visitor_message" placeholder="Escribe tu mensaje aquí." required></textarea> </div> <button type="submit">Enviar mensaje</button></form>
+                    
+            </form>
+            
+            
+        </div>
+        
+    </body>
+</html>
