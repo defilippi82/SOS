@@ -23,6 +23,7 @@ header {
 	border-left: 10px solid #fffa;
 	box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25) inset;
 }
+
 .header-bar::after {
 	content: '';
 	position: absolute;
@@ -36,7 +37,10 @@ header {
 	transition: 0.3s linear all;
   size: 0.2%;
 }
+.input-number {
+  width: 30px;
 
+}
 .slider-menu {
 	position: absolute;
 	top: 0;
