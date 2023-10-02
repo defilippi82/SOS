@@ -1,27 +1,82 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<link rel="stylesheet" href="reset.css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 		<link rel="stylesheet" href="sos.css">
 		<title> SOS by FHD</title>
 	</head>
 
 	<body>
 		<header>
+			<nav class="navbar bg-body-tertiary fixed-top">
+				<div class="container-fluid">
+				  <img src="/imagenes/ingreso.jpg " height="50px">
+				  <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				  </button>
+				  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+					<div class="offcanvas-header">
+					  <h5 class="offcanvas-title" id="offcanvasNavbarLabel">CUBE</h5>
+					  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+					</div>
+					<div class="offcanvas-body">
+					  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+						<li class="nav-item">
+							<a href="invitados.html" class="nav-link active" aria-current="page" href="#">Invitados</a>
+						</li>
+						<li class="nav-item">
+						  <a class="nav-link" href= "contacto.html">Contacto</a>
+						</li>
+						
+						<li class="nav-item dropdown">
+						  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Usuarios
+						  </a>
+						  <ul class="dropdown-menu">
+							<li><a class="nav-link" href= "Regusuarios.html">Registrarse</a></li>
+							<li><a class="nav-link" href= "Regusuarios.html">Ingresar</a></li>
+							<li>
+							  <hr class="dropdown-divider">
+							</li>
+							
+						  </ul>
+						</li>
+					  </ul>
+					  <form class="d-flex mt-3" role="search">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success" type="submit">Search</button>
+					  </form>
+					</div>
+				  </div>
+				</div>
+			  </nav>
+			
+			  <!--<nav class="navbar navbar-dark bg-dark">
+				<div class="container-fluid">
+				  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+					
+					<span class="navbar-toggler-icon"></span>
+				  </button>
+				  <img src="/imagenes/ingreso.jpg " height="50px">
+				  <a href="invitados.html">Invitados</a></li>
+					<a href= "contacto.html">Contacto</a></li>
+					<a href= "Regusuarios.html">Registrarse</a></li>
+				</div>
+			  </nav>
 				<div class="container">
 				<div class="header-bar">
 					<ul class="slider-menu">
-					
 					<li><a href="invitados.html">Invitados</a></li>
 					<li><a href= "contacto.html">Contacto</a></li>
 					<li><a href= "Regusuarios.html">Registrarse</a></li>
 					</ul>
 				</div>
 			</div>
-				<!--					
+								
 			<nav>
 				<ul>
 					<li><a href ="index.html">Home</a></li>
@@ -29,19 +84,65 @@
 					<li><a href= "contacto.html">Contacto</a></li>
 				</ul>
 			</nav>-->
+			
 		</header>
 		<main>
-			<!--<h1>ALERTA</h1>-->
-			<br><br><button type="button" value="alerta" class="boton1" onclick="alerta()">ALERTA</button><br><br><br>
-
-
-			<!--<h1>RUIDOS</h1>-->
-			<button type="button" value="ruidos" class="boton2" onclick="ruidos()">RUIDOS</button><br><br><br>
+			<div class="container alertas">
+				<div class="row g-1">
 			
-			<!--<h1>EMERGENCIA</h1>-->
-			<button type="button" value="ayuda" class="boton3" onclick="emergencia()">911</button><br><br>
+			<div class="col col-12 col-sm-6 col-lg-4 gx-4">
+					<div class="card"  >
+					<img src="/imagenes/seguridadAlerta.png" height="50%" class="card-img-top" alt="imagen de la la guardia">
+					<div class="card-body">
+				  <h5 class="card-title">ALERTA</h5>
+				  <p class="card-text">Avisar a la guardia</p>				  
+				  <button type="button" value="alerta" class="btn btn-danger" onclick="alerta()">ALERTA</button>
+				</div>
+				</div>
+			</div>
+		  				
+			<div class="col col-12 col-sm-6 col-lg-4 gx-4">
+			  <div class="card" >
+				<img src="/imagenes/vecinosAlerta.png" height="50%" class="card-img-top" alt="imagen de los vecinos de la isla">
+				<div class="card-body">
+				  <h5 class="card-title">RUIDOS</h5>
+				  <p class="card-text">Avisar a los vecinos de la isla</p>				  
+				  <button type="button" value="ruidos" class="btn btn-warning" onclick="ruidos()">RUIDOS</button>				  				  
+				</div>
+			  </div>
+			  </div>
+			
+			 <div class="col col-12 col-sm-6 col-lg-4 gx-4">
+			  <div class="card" >
+				<img src="/imagenes/911.png" height="50%" class="card-img-top" alt="imagen de la la guardia">
+				<div class="card-body">
+				  <h5 class="card-title">EMERGENCIA</h5>
+				  <p class="card-text">Llamar al 911</p>
+				  
+				  <button type="button" value="ayuda" class="btn btn-primary" onclick="emergencia()">911</button>
+				  				  
+				</div>
+			</div>
+			  </div>
+			</div>
+			</div>
+		
+			
+
+			<!--<h1>ALERTA</h1
+			<br><br><button type="button" value="alerta" class="btn btn-danger" onclick="alerta()">ALERTA</button><br><br><br>
+
+
+			<!--<h1>RUIDOS</h1>
+			<button type="button" value="ruidos" class="btn btn-warning" onclick="ruidos()">RUIDOS</button><br><br><br>
+			
+			<!--<h1>EMERGENCIA</h1
+			<button type="button" value="ayuda" class="btn btn-primary" onclick="emergencia()">911</button><br><br>>-->
 
 		</main>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
 
 	</body>
 	<footer>

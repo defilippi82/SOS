@@ -12,6 +12,16 @@ header {
 	flex-direction: column;
 	color: #fff;
 }
+
+.btn{
+  padding: 0.5rem 2rem;
+  transition: all;
+  transition-duration: 500ms;
+}
+.btn:hover{
+  scale: 1.25;
+}
+
 .header-bar { font-family: 'Quicksand'; }
 .header-bar {
 	position: relative;
@@ -65,7 +75,7 @@ header {
 	color: rgb(44, 14, 114);
 	box-shadow: 0 50px 5px rgba(0, 0, 0, 0.15) inset;
 }
-body{
+body ,.navbar,.offcanvas-body,.dropdown-menu,.card{
   background: rgb(34,193,195);
   background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%); 
 	font-style: bold;
