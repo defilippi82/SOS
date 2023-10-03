@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 	<head>
 		<meta charset="utf-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,7 +41,7 @@
 						  </a>
 						  <ul class="dropdown-menu">
 							
-							<li><a class="nav-link" href= "Regusuarios.html">Ingresar</a></li>
+							<li><a class="nav-link" href= "ingresoUsuario.html">Ingresar</a></li>
 							<li>
 							  <hr class="dropdown-divider">
 							</li>
@@ -89,8 +89,14 @@
                 <input type="number" required maxlength="3" class="input-number">
 	    </div>
                 <div>
-                <label for="tel">Teléfono</label>
-                <input type="tel" required placeholder="(XX)-XXXX-XXXX"></div>
+                <label for="password">Teléfono</label>
+                <input type="password" required placeholder="(XX)-XXXX-XXXX"></div>
+				<div>
+					<label for="password">Repetir Contraseña</label>
+					<input type="password" required placeholder="XXXXXXXX"></div>
+					<div>
+						<label for="tel">Contraseña</label>
+						<input type="tel" required placeholder="XXXXXXXX"></div>
                 <input type="submit" value="Registrarse"></div>
               <div class="elem-group"> <label for="title">Motivo de contacto</label> <input type="text" id="title" name="email_title" required placeholder="Problema/Consulta" pattern=[A-Za-z0-9\s]{8,60}> </div> <div class="elem-group"> <label for="message">Solicitud</label> <textarea id="message" name="visitor_message" placeholder="Escribe tu mensaje aquí." required></textarea> </div> <button type="submit">Enviar mensaje</button></form>
                     
