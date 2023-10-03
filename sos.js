@@ -248,3 +248,146 @@ function invitar(){
 
     window.open(whatsappUrl);
 }
+const mysql= require('mysql')
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '54939423Fe',
+    database: 'cube'
+});
+
+const usuario = document.getElementById('email').value;
+  const contrasena =document.getElementById('password').value;
+function verificarUsuario(usuario, contrasena) {
+
+   let usuarioValido = false;
+   let contrasenaValida = false;
+   connection.query('SELECT * FROM usuarios WHERE email=?', [usuario], function(error, results, fields){
+    if (results.length > 0){
+        usuarioValido = true;
+    }
+   });
+   connection.query('SELECT * FROM contrasena WHERE password=?', [usuario], function(error, results, fields){
+    if (results [0].contrasena === contrasena){
+        usuarioValido = true;
+    }
+   });
+  
+    if(usuarioValido && contrasenaValida) {
+      return true; 
+    } else {
+      return false;
+    }
+  
+  }
+  
+    
+  const esValido = verificarUsuario(usuario, contrasena);
+  
+  if(esValido) {
+    console.log('Inicio de sesión exitoso');
+  } else {
+    console.log('Datos de acceso incorrectos');
+  }
+  
+  const mysql = require('mysql');
+
+  function crearDB() {
+  
+    /*const connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: 'tucontraseña' 
+    });*/
+  
+    connection.query('CREATE DATABASE IF NOT EXISTS cube', function(err) {
+      if (err) throw err;
+  
+      console.log('Base de datos creada');
+    });
+  
+    connection.query('USE cube', function(err) {
+      if (err) throw err;
+    });
+  
+    const sql = `
+      CREATE TABLE usuarios (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        nombre VARCHAR(100),        
+        email VARCHAR(100),        
+        manzana INT,
+        lote INT,
+        isla INT,
+        telefono VARCHAR(20),
+        contrasena VARCHAR(10)
+        
+      )
+    `;
+  
+    connection.query(sql, function(err) {
+      if (err) throw err;
+  
+      console.log('Tabla usuarios creada');
+    });
+  
+  }
+  
+  crearDB();
+  // Conexión a la base de datos
+/*const mysql = require('mysql');
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'tucontraseña',
+  database: 'cube'
+});*/
+
+// Datos de prueba
+const usuarios = [
+  {nombre: 'Federico De Filippi', email: 'f.defilippi@gmail.com', manzana: 5, lote: 10, isla: 3,  telefono: '11-5493-9423', contrasena: '54939423Fe'},
+  {nombre: 'Maria', email: 'maria@email.com', manzana: 5, lote: 9, isla: 3, telefono: '444555666', contrasena: '5678'},
+];
+
+// Insertar usuarios
+usuarios.forEach(usuario => {
+  const sql = `
+    INSERT INTO usuarios (nombre, email, manzana, lote, isla, telefono, contrasena) 
+    VALUES ('${usuario.nombre}', '${usuario.email}', ${usuario.manzana}, ${usuario.lote}, ${usuario.isla}, '${usuario.telefono}', '${usuario.contrasena}')
+  `;
+
+  connection.query(sql, function(err) {
+    if (err) throw err;
+
+    console.log('Usuario agregado:', usuario.nombre);
+  });
+});
+
+// Al iniciar sesión
+const usuario = obtenerUsuarioDeBD(); 
+
+// Agregar datos al navbar
+const navbar = document.getElementById('navbar');
+
+const nombre = document.createElement('span');
+nombre.textContent = usuario.nombre;
+
+const email = document.createElement('span'); 
+email.textContent = usuario.email;
+
+navbar.appendChild(nombre);
+navbar.appendChild(email);
+
+// Verificar en cada ruta si hay sesión activa
+router.beforeEach((to, from, next) => {
+  const usuario = obtenerUsuarioDeBD();
+
+  if (usuario) {
+    // Hay sesión, permite acceder 
+    next();
+  } else {
+    // No hay sesión, redirige al login
+    next('/ingresoUsuario.html'); 
+  }
+})
+
+  
