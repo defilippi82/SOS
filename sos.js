@@ -77,6 +77,7 @@ function listaInvitado() {
     document.getElementById('patente').value = "";
     nombreapellidoInput.focus();
 }
+//El invitado envia los datos a un mail
 function invitacion(){
 
     const nombreapellido = document.getElementById('nombreapellido').value;
@@ -102,7 +103,7 @@ function invitacion(){
     nombreapellidoInput.focus();
 
 }
-
+//SE ENVIA EL CORREO A LA GUARDIA O LA LISTA DE INVITADOS
 function invitado() {
     event.preventDefault();
 

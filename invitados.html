@@ -53,15 +53,7 @@
 				  </div>
 				</div>
 			  </nav>
-        <!--<div class="container">
-			<div class="header-bar">
-				<ul class="slider-menu">
-				<li><a href ="index.html">Home</a></li>
-				<li><a href= "contacto.html">Contacto</a></li>
-				<li><a href= "Regusuarios.html">Registrarse</a></li>
-				</ul>
-			</div>
-		</div>-->
+        
     </header>
 
     <body>
@@ -79,9 +71,24 @@
 
 				<label for="mensaje">Mensaje</label><br>
 				<textarea cols="30" rows=auto name="mensaje" id="mensaje"class="input-padron" placeholder="aclaraciones " ></textarea><br>
-
-				<input type="checkbox" id="enviarCorreo" name="enviarCorreo">
-				<label for="enviarCorreo">Enviar correo electrónico</label>
+				<section>
+					<h1>Lista de invitados</h1>
+					<table class="table table-dark table-striped">
+						<thead >
+							<tr>
+								<th>Nombre</th>
+								<th>D.N.I.</th>
+								<th>Patente</th>
+							</tr>
+						</thead>
+						<tbody id="tabla">
+					</tbody>
+				</table>
+			</section>
+				<div >
+				<input type="checkbox" id="enviarCorreo" name="enviarCorreo" >
+				<label for="enviarCorreo">Enviar Lista de Invitados</label>
+				</div>
 
                 <input type="submit" value="Agregar a la lista" class="btn btn-success enviar" onclick="listaInvitado()">
 				<input type="submit" value="Enviar a la Guardia" class="btn btn-primary enviar" onclick="invitado()"><br>
@@ -91,20 +98,7 @@
                 
 			</form>
         </main>
-            <section>
-                <h1>Lista de invitados</h1>
-                <table border="2">
-                    <thead >
-                        <tr>
-                            <th>Nombre</th>
-                            <th>D.N.I.</th>
-                            <th>Patente</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabla">
-                </tbody>
-            </table>
-        </section>
+           
 
     </body>
     <footer>
